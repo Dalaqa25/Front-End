@@ -233,3 +233,76 @@ a:link {
     transform: scale(1);
     box-shadow: 0 0 50px hsl(var(--clr-white) / 0.6);
 }
+
+.primary-navigation {
+    --gap: 8rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.primary-navigation a > span {
+    font-weight: 700;
+    margin-right: .5em;
+}
+
+.underline-indicators > * {
+    padding: var(--underline-gap, 1rem) 0;
+    border: 0;
+    border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+    border-color: hsl( var(--clr-white) / .5);
+}
+
+.underline-indicators > .active{
+    border-color: hsl( var(--clr-white) / 1);
+}
+
+.tabs-list {
+    --gap: 2rem;
+}
+
+.dot-indicators > * {
+    cursor: pointer;
+    border: 0;
+    border-radius: 50%;
+    padding: .5em;
+    background-color: hsl( var(--clr-white) / .25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+    background-color: hsl( var(--clr-white) / .5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+    background-color: hsl( var(--clr-white) / 1); 
+}
+
+.rounded-indicators {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Space between buttons */
+    align-items: center;
+}
+
+.rounded-indicators button {
+    width: 60px; /* Width of the button */
+    height: 60px; /* Height of the button */
+    border-radius: 50%; /* Make the button circular */
+    background-color: hsl( var(--clr-dark) );
+    color: white; /* Button text color */
+    font-size: 20px; /* Text size */
+    text-align: center; /* Center text horizontally */
+    cursor: pointer;
+    border: 0.5px solid;
+}
+
+.rounded-indicators > *:hover,
+.rounded-indicators > *:focus {
+    background-color: hsl( var(--clr-white));
+    color: hsl( var(--clr-dark) );
+}
