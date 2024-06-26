@@ -110,13 +110,13 @@ select {
     gap: var(--gap, 1rem);
 }
 
-.flow > *:where(:not(:first-child)) {
-    margin-top: var(--flow-space, 1rem);
-}
-
 .grid {
     display: grid;
     gap: var(--gap, 1rem);
+}
+
+.flow > *:where(:not(:first-child)) {
+    margin-top: var(--flow-space, 1rem);
 }
 
 .container {
@@ -175,70 +175,63 @@ select {
     line-height: 1.1;
 }
 
-a:link { 
-    text-decoration: none; 
-  } 
-  a:visited { 
-    text-decoration: none; 
-  } 
-  a:hover { 
-    text-decoration: none; 
-  } 
-  a:active { 
-    text-decoration: none; 
-  }
-  
-
 .numbered-title {
     font-family: var(--ff-sans-cond);
     font-size: var(--fs-500);
     text-transform: uppercase;
-    letter-spacing: 4.72px;
+    letter-spacing: 4.72px; 
 }
 
 .numbered-title span {
     margin-right: .5em;
     font-weight: 700;
-    color: #FFFFFF40;
+    color: hsl( var(--clr-white) / .25);
 }
 
-/* ----------- */
-/* components */
-/* ----------- */
+
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
 
 .large-button {
     position: relative;
+    z-index: 1;
     display: grid;
-    padding: 0 2em;
-    aspect-ratio: 1;
     place-items: center;
+    padding: 0 2em;
     border-radius: 50%;
+    aspect-ratio: 1;
+    text-decoration: none;
 }
 
 .large-button::after {
     content: '';
     position: absolute;
     z-index: -1;
-    background: hsl(var(--clr-white) / 0.15);
     width: 100%;
     height: 100%;
+    background: hsl( var(--clr-white) / .1);
     border-radius: 50%;
-    box-shadow: 0 0 20px hsl(var(--clr-white) / 0.4);
     opacity: 0;
-    transition: opacity 100ms linear, transform 800ms ease-in-out, box-shadow 500ms ease-in-out;
+    transition: opacity 500ms linear, transform 750ms ease-in-out;
 }
-
-.large-button:hover::after {
+ 
+.large-button:hover::after,
+.large-button:focus::after {
     opacity: 1;
-    transform: scale(1);
-    box-shadow: 0 0 50px hsl(var(--clr-white) / 0.6);
+    transform: scale(1.5);
 }
 
 .primary-navigation {
     --gap: 8rem;
+    --underline-gap: 2rem;
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.primary-navigation a {
+    text-decoration: none;
 }
 
 .primary-navigation a > span {
@@ -247,6 +240,7 @@ a:link {
 }
 
 .underline-indicators > * {
+    cursor: pointer;
     padding: var(--underline-gap, 1rem) 0;
     border: 0;
     border-bottom: .2rem solid hsl( var(--clr-white) / 0 );
@@ -257,11 +251,13 @@ a:link {
     border-color: hsl( var(--clr-white) / .5);
 }
 
-.underline-indicators > .active{
-    border-color: hsl( var(--clr-white) / 1);
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+    color: hsl( var(--clr-white) / 1);
+    border-color: hsl( var(--clr-white) / 1); 
 }
 
-.tabs-list {
+.tab-list {
     --gap: 2rem;
 }
 
@@ -272,37 +268,12 @@ a:link {
     padding: .5em;
     background-color: hsl( var(--clr-white) / .25);
 }
-
+ 
 .dot-indicators > *:hover,
-.dot-indicators > *:focus {
+.dot-indicators > *:focus { 
     background-color: hsl( var(--clr-white) / .5);
 }
 
 .dot-indicators > [aria-selected="true"] {
     background-color: hsl( var(--clr-white) / 1); 
-}
-
-.rounded-indicators {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Space between buttons */
-    align-items: center;
-}
-
-.rounded-indicators button {
-    width: 60px; /* Width of the button */
-    height: 60px; /* Height of the button */
-    border-radius: 50%; /* Make the button circular */
-    background-color: hsl( var(--clr-dark) );
-    color: white; /* Button text color */
-    font-size: 20px; /* Text size */
-    text-align: center; /* Center text horizontally */
-    cursor: pointer;
-    border: 0.5px solid;
-}
-
-.rounded-indicators > *:hover,
-.rounded-indicators > *:focus {
-    background-color: hsl( var(--clr-white));
-    color: hsl( var(--clr-dark) );
 }
